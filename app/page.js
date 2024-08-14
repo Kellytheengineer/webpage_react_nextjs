@@ -1,11 +1,15 @@
 import Image from "next/image";
 import "./page.css";
+import HeroDescription from "../src/Hero/HeroDescription/HeroDescription.jsx";
+import HeroImage from "../src/Hero/HeroImage/HeroImage.jsx";
 
 
 export default function Home() {
   return (
-    <main className="main">
-      welcome page
+    <main>
+     <HeroDescription/>
+     <HeroImage/>
+
     </main>
   );
 }

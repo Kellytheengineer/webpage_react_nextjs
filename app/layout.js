@@ -1,7 +1,13 @@
-import { Inter } from "next/font/google";
+import { Aleo } from "next/font/google";
 import "./globals.css";
+import Footer from "../src/Footer/Footer.jsx"; 
+import Header from "../src/Header/Header.jsx";
 
-const inter = Inter({ subsets: ["latin"] });
+
+
+
+const aleo = Aleo({ subsets: ["latin"] });
+
 
 export const metadata = {
   title: "Create Next App",
@@ -11,77 +17,17 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className="wrapper">
-        <Header 
-        title={"🔥Fireplace palace"}/>
-         
+      <body className={aleo.className}>
+        <Header/>
+        
         {children}
-
         <Footer
-            weblink1={"https://www.facebook.com"}
-            text1={"Facebook"}
-           
-            weblink2={"https://www.instagram.com"}
-            text2={"Instgram"}
-          
-            weblink3={"https://www.tiktok.com"}
-            text3={"Tiktok"}
+          />
 
-            email={"mailto:info@firepalace.co.uk2"}
-            emailtext={"info@firepalace.co.uk"}
-            />
-        </div>
+       
       </body>
+      
     </html>
   );
 }
 
-function Header({title}){
-  return(
-    <header className="header-container">
-        <h1>{title}</h1>
-      </header> 
-  );
-}
-
-function Footer ({weblink1, text1,weblink2, text2,weblink3, text3 , email , emailtext}){
-
-  return(
-  <footer className="footer">
-          <div className="colunms-container">
-            <div className="footer-column">
-              <p>Find us on:</p>
-              <ul className="footer-nav">
-                <li>
-
-                  <a href={weblink1} className="socials-link">
-                  {text1}
-                    </a>
-                </li>
-                <li>
-                  <a href={weblink2} className="socials-link">
-                  {text2}
-                    </a>
-                </li>
-                <li>
-                  <a href={weblink3} className="socials-link">
-                  {text3}</a>
-                </li>
-              </ul>
-            </div>
-
-            <div className="footer-column">
-              <p>Contact us:</p>
-              <address>
-                <a href={email} className="email-link">
-                {emailtext}
-                  </a>
-              </address>
-            </div>
-          </div>
-        </footer>
-
-  )
-  
-}
