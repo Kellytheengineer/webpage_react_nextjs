@@ -1,4 +1,4 @@
-import { useState } from 'react';
+
 import { Aleo } from "next/font/google";
 import "./globals.css";
 import Footer from "../src/Footer/Footer.jsx"; 
@@ -16,21 +16,11 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
-  const [menuStatus, setMenuStatus ] = useState(false);
-
-  function handleClick() {
-    setMenuStatus(!menuStatus)
-  }
-
-
-
+  
   return (
     <html lang="en">
       <body className={aleo.className}>
         <Header/>
-        <button onClick={handleClick}>{menuStatus ? 'Hide' : 'Show'} Main Menu</button>
-        {menuStatus && <nav className = {styles.mainMenu}><button>X</button><p>Home</p><p>Meet the Founders</p></nav>} 
-        
         {children}
         <Footer/>
       </body>

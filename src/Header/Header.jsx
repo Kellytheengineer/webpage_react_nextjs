@@ -12,8 +12,6 @@ const Header = () => {
     setMenuStatus(!menuStatus)
   }
 
-
-
   return (
     <header className={styles.headerContainer}>
       <h1 className={styles.title}>🔥 Fireplace Palace</h1>
