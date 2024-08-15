@@ -11,3 +11,9 @@
       width: 70%;
     }
   }
+
+  .mainMenu {
+    background-color: orange;
+    width: 100vh;
+    height:100vh;
+  }

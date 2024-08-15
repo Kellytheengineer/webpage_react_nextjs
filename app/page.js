@@ -7,8 +7,8 @@ import HeroImage from "../src/Hero/HeroImage/HeroImage.jsx";
 export default function Home() {
   return (
     <main>
+      <HeroImage/>
      <HeroDescription/>
-     <HeroImage/>
 
     </main>
   );
