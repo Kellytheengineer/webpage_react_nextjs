@@ -1,8 +1,8 @@
 "use client";
 
-import { useState , useEffect } from 'react';
-import styles from '/Review/Review.css'
-import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import styles from './Review.module.css'
+
 
 /*Someone clicks a button which changes the state of "selectedCountry".
 When the "selectedCountry" state changes the component will re-render and if the  useEffect depends on that state it will trigger the useEffect hook to run.
@@ -43,22 +43,50 @@ const Reviews = () => {
         }));
     }
 
+    const[selectedButton, setSelectedButton]=useState(null);
+    const[reviewData, setReviewData]=useState(null);
+    
+    console.log(reviewData)
+    
+    useEffect(()=>{
+        if(selectedButton){
+            fetch(`https://seal-app-336e8.ondigitalocean.app/reviews?country=${selectedButton}`)
+                .then(Response=>Response.json())
+                .then(data=> setReviewData(data))
+    }
+
+},[selectedButton]);
+function selectButton(country){
+    setSelectedButton(country);
+}
+
+
+
     return (
         <div>
             <button
-                onClick={() => handleButtonClick('scotland')}
+                 onClick={() => {
+                    selectButton("scotland");
+                    handleButtonClick("scotland");
+                }}
                 className={buttonStatuses.scotland ? styles.clickedButton : ''}
             >
                 Scotland
             </button>
             <button
-                onClick={() => handleButtonClick('wales')}
+                 onClick={() => {
+                    selectButton("wales");
+                    handleButtonClick("wales");
+                }}
                 className={buttonStatuses.wales ? styles.clickedButton : ''}
             >
                 Wales
             </button>
             <button
-                onClick={() => handleButtonClick('england')}
+                 onClick={() => {
+                    selectButton("england");
+                    handleButtonClick("england");
+                }}
                 className={buttonStatuses.england ? styles.clickedButton : ''}
             >
                 England
