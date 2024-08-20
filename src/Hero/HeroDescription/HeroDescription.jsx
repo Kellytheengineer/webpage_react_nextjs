@@ -1,5 +1,6 @@
 
 import styles from './HeroDescription.module.css'
+import Link from 'next/link';
 
 const HeroDescription = () => {
     return (
@@ -9,7 +10,7 @@ const HeroDescription = () => {
           perfect fireplace ...
         </p>
         <p className={styles.consultationParagraph}>
-          Book consultation: <span className={styles.numberSpan}>0121 345 6789</span>
+          Book consultation: <span className={styles.numberSpan}><Link href="/booking/">Booking</Link></span>
         </p>
       </div>
     )
