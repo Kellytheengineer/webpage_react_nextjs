@@ -6,6 +6,7 @@ export default function Booking() {
     const [ fullName, setFirstName ] = useState("");
     const [ postCode, setPostCode ] = useState("");
     const [ houseNumber, setHouseNumber ] = useState("");
+    const [ city, setCity ] = useState("");
 
     function handleChange(event){
       if (event.target.name==="fullName"){
@@ -17,7 +18,9 @@ export default function Booking() {
       if (event.target.name==="houseNumber"){
         setHouseNumber(event.target.value)
       }
-
+      if (event.target.name==="city"){
+        setCity(event.target.value)
+      }
     }
 
 
@@ -51,13 +54,21 @@ export default function Booking() {
             </li>
             <li>
                 <label for="houseNumber">House/Flat Number and Street Name</label>
-                <input type="text" id="houseNumber" name="houseNumber" 
+                <input 
+                type="text" 
+                id="houseNumber" 
+                name="houseNumber" 
                 value={houseNumber}
                 onChange={(event)=>handleChange(event)}/>  
             </li>
             <li>
                 <label for="city">City</label>
-                <input type="text" id="city" name="city"></input>    
+                <input 
+                type="text" 
+                id="city" 
+                name="city"
+                value={city}
+                onChange={(event)=>handleChange(event)}/>  
             </li>
             </ul>
             </fieldset> 
