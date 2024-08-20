@@ -1,26 +1,36 @@
-
+"use client";
+import { useState  } from 'react';
 
 export default function Booking() {
+
+    const [ firstName, setFirstName ] = useState("");
+
+    const  handleFirstNameChange = (event) => {
+        setFirstName(event.target.value);
+    };
+
+    console.log(firstName)
+
     return (
       <main>
         <form>
         <fieldset>
           <ul>
              <li>
-        <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" name="fullName"></input>
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" value={firstName} onChange={handleFirstNameChange}></input>
             </li>
             <li>
-        <label for="postCode">Post Code</label>
-            <input type="text" id="postCode" name="postCode"></input>           
+                <label for="postCode">Post Code</label>
+                <input type="text" id="postCode" name="postCode"></input>           
             </li>
             <li>
-        <label for="houseNumber">House/Flat Number and Street Name</label>
-            <input type="text" id="houseNumber" name="houseNumber"></input>    
+                <label for="houseNumber">House/Flat Number and Street Name</label>
+                <input type="text" id="houseNumber" name="houseNumber"></input>    
             </li>
             <li>
-        <label for="city">City</label>
-            <input type="text" id="city" name="city"></input>    
+                <label for="city">City</label>
+                <input type="text" id="city" name="city"></input>    
             </li>
             </ul>
             </fieldset> 

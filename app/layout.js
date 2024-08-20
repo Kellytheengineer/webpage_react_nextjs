@@ -3,7 +3,7 @@ import { Aleo } from "next/font/google";
 import "./globals.css";
 import Footer from "../src/Footer/Footer.jsx"; 
 import Header from "../src/Header/Header.jsx";
-import Link from 'next/link';
+
 
 
 
