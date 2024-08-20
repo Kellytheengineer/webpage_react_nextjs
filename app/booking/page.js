@@ -3,13 +3,26 @@ import { useState  } from 'react';
 
 export default function Booking() {
 
-    const [ firstName, setFirstName ] = useState("");
+    const [ fullName, setFirstName ] = useState("");
+    const [ postCode, setPostCode ] = useState("");
+    const [ houseNumber, setHouseNumber ] = useState("");
 
-    const  handleFirstNameChange = (event) => {
-        setFirstName(event.target.value);
-    };
+    function handleChange(event){
+      if (event.target.name==="fullName"){
+        setFirstName(event.target.value)
+      }
+      if (event.target.name==="postCode"){
+        setPostCode(event.target.value)
+      }
+      if (event.target.name==="houseNumber"){
+        setHouseNumber(event.target.value)
+      }
 
-    console.log(firstName)
+    }
+
+
+
+    console.log(fullName, postCode,houseNumber)
 
     return (
       <main>
@@ -18,15 +31,29 @@ export default function Booking() {
           <ul>
              <li>
                 <label for="fullName">Full Name</label>
-                <input type="text" id="fullName" name="fullName" value={firstName} onChange={handleFirstNameChange}></input>
+                <input 
+                  type="text" 
+                  id="fullName" 
+                  name="fullName" 
+                  value={fullName} 
+                  onChange={(event)=>handleChange(event)}/>
             </li>
             <li>
                 <label for="postCode">Post Code</label>
-                <input type="text" id="postCode" name="postCode"></input>           
+                <input 
+                  type="text" 
+                  id="postCode" 
+                  name="postCode"
+                  value={postCode}
+                  onChange={(event)=>handleChange(event)}
+                  />
+                             
             </li>
             <li>
                 <label for="houseNumber">House/Flat Number and Street Name</label>
-                <input type="text" id="houseNumber" name="houseNumber"></input>    
+                <input type="text" id="houseNumber" name="houseNumber" 
+                value={houseNumber}
+                onChange={(event)=>handleChange(event)}/>  
             </li>
             <li>
                 <label for="city">City</label>
