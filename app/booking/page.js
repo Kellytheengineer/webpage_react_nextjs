@@ -1,10 +1,17 @@
-"use client";import { useState, useReducer  } from 'react';//defining the states required for the reducer
+"use client";
+
+import { useReducer  } from 'react';
+import "./page.css";
+
+//defining the states required for the reducer
 const initialState = {
   data: {
       fullName: '',
     },
-    status: false
-};//create a reducer function
+    status: 'editing'
+};
+
+//create a reducer function
 function reducer (state, action) {
   switch (action.type) {
     case "CHANGE_FORM_DATA":
@@ -19,32 +26,62 @@ function reducer (state, action) {
         return{
           ...state,
           status:"error"
+      };
+      case 'SUBMITTING':
+        return{
+          ...state,
+          status:"submitting"
+        };
+      case "FORM_SUCCESS":
+        return{
+          ...state,
+          status:"success"
         };
     default:
       return state
   }
-}export default function Booking() {  //old states
-  const [ fullName, setFirstName ] = useState("");
-  const [ error, setError ] = useState(false);  // passing your initial state object :slightly_smiling_face:
+
+}export default function Booking() { 
   const [ state, dispatch ] = useReducer(reducer, initialState);
+
   console.log(state)  
+
   function handleChange (event){
-        dispatch({
-          type:"CHANGE_FORM_DATA",
-          payload:{
-            name: event.target.name, //fullName
-            value: event.target.value //defined by user
-          }
-        })
-    }    function handleSubmit(event) {
-      event.preventDefault();
-      if (!state.data.fullName) //if name and value false return error, return dispatch object with type "ERROR"
+    dispatch({
+      type:"CHANGE_FORM_DATA",
+      payload:{
+        name: event.target.name, //fullName
+        value: event.target.value //defined by user
+      }
+      })
+    }    
+    
+    function handleSubmit(event) {
+    event.preventDefault();
+    
+    dispatch({
+      type:"SUBMITTING",
+    })  
+    
+    setTimeout(() => {
+    if (!state.data.fullName) {
      dispatch({
       type:"ERROR",
-     })  }    return (
+     })  
+    }
+    dispatch({
+      type:"FORM_SUCCESS",
+    })  
+
+    }, 3000);
+  }    
+     
+  
+  return (
       <main>
         <form onSubmit={(event) => handleSubmit(event)}>
         <fieldset>
+        {state.status === "success" && <p className='succesPage'> Thank you for the submission!</p>}
           <ul>
              <li>
                 <label for="fullName">Full Name</label>
@@ -63,10 +100,11 @@ function reducer (state, action) {
             </ul>
             </fieldset>
             {state.status === "error" && <p> Value entered are not correct</p>}
-            <button>Request Design Consultation</button>
+            {state.status}
+            {state.status === "submitting" || <button>Request Design Consultation</button>}
             </form>
        <h1>Booking</h1>
       </main>
     );
-  }  // create a variable that holds the states that we previously created
+  }  
   
