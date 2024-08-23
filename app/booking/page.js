@@ -33,6 +33,8 @@ function reducer(state, action) {
       return {
         ...state,
         status: "error",
+        errormessage: action.payload.message,
+        errorfield: action.payload.name
       };
     case "SUBMITTING":
       return {
@@ -75,29 +77,26 @@ export default function Booking() {
       type: "SUBMITTING",
     });
 
-    setTimeout(() => {
-      if (!state.data.fullName || !state.data.postcode || !state.data.houseNumber || !state.data.city || !state.data.email || !state.data.phoneNumber) {
-        // add post code and house number to if statement
+    setTimeout(() => { 
+      let fields=[{name:"fullName" ,value: state.data.fullName},{name:"postcode" ,value: state.data.postcode} ,{name:"houseNumber" ,value: state.data.houseNumber},{name:"city" ,value: state.data.city},{name:"email" ,value: state.data.email},{name:"phoneNumber" ,value: state.data.phoneNumber}]
+      let invalidField = fields.find(field => field.value === "");
+      if (invalidField){
         dispatch({
-          type: "ERROR",
-        });
-      } else
-        dispatch({
-          type: "FORM_SUCCESS",
-        });
+          type:"ERROR",
+          payload: {
+            name: invalidField.name,
+            message: `${invalidField.name} cannot be empty`
+        }
+      });
+    } else {
+      dispatch({
+        type: "FORM_SUCCESS",
+      });
+    }
+    
+      
     }, 3000);
   }
-
-  let array=[state.data.fullName, state.data.postcode, state.data.houseNumber, state.data.city, state.data.email, state.data.phoneNumber]
-  let checkArray=array.map((input)=>{
-    if (input==="") {return false} 
-    else return true})
-    if(checkArray[0]===false)
-      dispatch({
-        type:"ERROR_FULLNAME"
-      })
-
-
 
 
   return (
