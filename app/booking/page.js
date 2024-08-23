@@ -13,7 +13,9 @@ const initialState = {
     email:"",
     phoneNumber:""
   },
-  status: "editing"
+  status: "editing",
+  errormessage: "",
+  errorfield: ""
 };
 
 //create a reducer function
@@ -42,11 +44,12 @@ function reducer(state, action) {
         ...state,
         status: "success",
       };
-    case "ERROR_"
-    return: "
-    
-    
-    default
+    case "ERROR_FULLNAME":
+    return {
+      ...state,
+
+    };
+    default:
       return state;
   }
 }
@@ -77,10 +80,7 @@ export default function Booking() {
         // add post code and house number to if statement
         dispatch({
           type: "ERROR",
-          payload: {
-            name: event.target.name, //fullName
-            value: event.target.value, //defined by user
-        }});
+        });
       } else
         dispatch({
           type: "FORM_SUCCESS",
@@ -94,7 +94,7 @@ export default function Booking() {
     else return true})
     if(checkArray[0]===false)
       dispatch({
-        type:"ERROR_"
+        type:"ERROR_FULLNAME"
       })
 
 
