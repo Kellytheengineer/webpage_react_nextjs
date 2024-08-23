@@ -29,4 +29,10 @@ when status = success then show message(div/P)
 To do:
 
 - add fields for contact information
-  -As a user who has incorrectly submitted the form I should see an error under each field that has failed validation. The error should be specific to the field ("Not a valid phone number", "No bookings outside of England, Wales or Scotland").
+  -As a user who has incorrectly submitted the form I should see an error under each field that has failed validation. 
+  -The error should be specific to the field ("Not a valid phone number", "No bookings outside of England, Wales or Scotland").
+
+all state data into array
+loop through array with array.foreach if true, change value in array to true
+any arrays true, send specific dispatch message
+ 

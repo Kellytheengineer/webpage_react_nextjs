@@ -9,9 +9,11 @@ const initialState = {
     fullName: "",
     postcode: "",
     houseNumber: "",
-    city: ""
+    city: "",
+    email:"",
+    phoneNumber:""
   },
-  status: "editing",
+  status: "editing"
 };
 
 //create a reducer function
@@ -40,7 +42,11 @@ function reducer(state, action) {
         ...state,
         status: "success",
       };
-    default:
+    case "ERROR_"
+    return: "
+    
+    
+    default
       return state;
   }
 }
@@ -67,17 +73,32 @@ export default function Booking() {
     });
 
     setTimeout(() => {
-      if (!state.data.fullName || !state.data.postcode || !state.data.houseNumber || !state.data.city ) {
+      if (!state.data.fullName || !state.data.postcode || !state.data.houseNumber || !state.data.city || !state.data.email || !state.data.phoneNumber) {
         // add post code and house number to if statement
         dispatch({
           type: "ERROR",
-        });
+          payload: {
+            name: event.target.name, //fullName
+            value: event.target.value, //defined by user
+        }});
       } else
         dispatch({
           type: "FORM_SUCCESS",
         });
     }, 3000);
   }
+
+  let array=[state.data.fullName, state.data.postcode, state.data.houseNumber, state.data.city, state.data.email, state.data.phoneNumber]
+  let checkArray=array.map((input)=>{
+    if (input==="") {return false} 
+    else return true})
+    if(checkArray[0]===false)
+      dispatch({
+        type:"ERROR_"
+      })
+
+
+
 
   return (
     <main>
@@ -138,6 +159,23 @@ export default function Booking() {
         </fieldset>
         <fieldset className="group">
           <legend className="groupTitle">Contact Info:</legend>
+          <label for="email">Email Address</label>
+          <input 
+          type="email" 
+          id="email" 
+          name="email"
+          value={state.data.email}
+          onChange={(event) => handleChange (event)}
+          />
+            <label for="phoneNumber">Phone number</label>
+            <input 
+            type="text"  
+            id="phoneNumber" 
+            name="phoneNumber"
+            value={state.data.phoneNumber}
+            onChange={(event) => handleChange(event)}
+            ></input>    
+
           <ul></ul>
         </fieldset>
         {state.status === "error" && (
