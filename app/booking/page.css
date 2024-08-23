@@ -8,3 +8,52 @@
     right:0;
     bottom:0;
 }
+
+.form {
+    padding: 15px;
+    margin: 0 0 50px;
+}
+
+.group {
+    position: relative;
+    background: #ccc;
+    padding-top: 15px;
+    margin-top: 50px;
+    border: 0px;
+}
+
+.groupTitle {
+    position: absolute;
+    top: -40px;
+    left: 0px;
+    font-size: 1.3rem;
+}   
+
+.inputGroup {
+    display: block;
+    margin-bottom: 15px;
+}
+
+.input {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+}
+
+.button {
+    font-size: 1rem;
+    background: orange;
+    border: 0;
+    padding: 10px;
+    margin-top: 15px;
+    width: 100%;
+}
+
+.button:hover {
+    cursor: pointer;
+}
+
+.error {
+    color:red;
+}
